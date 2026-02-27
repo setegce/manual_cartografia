@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manual da Cartografia</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container-principal">
+
+    <header class="app-header">
+      <img src="doc/LOGO.png" class="logo-left" alt="Logo" />
+
+      <div class="header-center">
+        <h1 class="titulo-principal">Manual da Cartografia</h1>
+        <p class="subtitulo">Padrões • Fluxos • Qualidade • Organização do Servidor</p>
+
+        <nav class="tabs" aria-label="Navegação do manual">
+          <button class="tab active" data-target="introducao" data-label="Introdução" type="button">Introdução</button>
+          <button class="tab" data-target="fluxo" data-label="Fluxo Operacional" type="button">Fluxo Operacional</button>
+          <button class="tab" data-target="padroes" data-label="Padrões Técnicos" type="button">Padrões Técnicos</button>
+          <button class="tab" data-target="estrutura" data-label="Estrutura de Pastas" type="button">Estrutura de Pastas</button>
+          <button class="tab" data-target="elementos" data-label="Elementos Obrigatórios" type="button">Elementos</button>
+          <button class="tab" data-target="boaspraticas" data-label="Boas Práticas" type="button">Boas Práticas</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="app-main">
+
+      <!-- INTRODUÇÃO -->
+      <section id="introducao" class="secao ativa" data-page-title="Introdução">
+        
+
+        <div class="grid-resumo">
+          <div class="resumo-card">
+            <h4>Objetivo</h4>
+            <p>Padronizar a produção cartográfica, garantindo qualidade técnica e rastreabilidade.</p>
+          </div>
+          <div class="resumo-card">
+            <h4>Aplicação</h4>
+            <p>Projetos ambientais, minerários e territoriais, com mapas e croquis técnicos.</p>
+          </div>
+          <div class="resumo-card">
+            <h4>Impacto</h4>
+            <p>Consistência visual, redução de retrabalho e melhor tomada de decisão.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <p>
+            A Cartografia constitui competência técnica para criar, modelar e gerenciar representações visuais e digitais
+            do espaço geográfico, viabilizando análise, interpretação e comunicação de informações territoriais.
+          </p>
+          <p>
+            Este manual orienta elaboração, revisão e organização da arquitetura cartográfica, garantindo
+            consistência, confiabilidade e qualidade na produção.
+          </p>
+
+          <a href="doc/MANUAL_CARTOGRAFIA_SETEG_R01.pdf" target="_blank" class="btn-outline">
+            📄 Visualizar Manual Oficial (PDF)
+          </a>
+        </div>
+      </section>
+
+      <!-- FLUXO OPERACIONAL -->
+      <section id="fluxo" class="secao" data-page-title="Fluxo Operacional">
+        
+
+        <!-- Linha do fluxo centralizada com a caixa -->
+        <div class="card">
+          <div class="fluxo-wrap" aria-label="Linha do tempo do fluxo">
+            <div class="fluxo-linha">
+              <div class="etapa">1. Solicitação</div>
+              <div class="seta">→</div>
+              <div class="etapa">2. Elaboração</div>
+              <div class="seta">→</div>
+              <div class="etapa">3. Revisão</div>
+              <div class="seta">→</div>
+              <div class="etapa">4. Ajustes</div>
+              <div class="seta">→</div>
+              <div class="etapa">5. Entrega</div>
+            </div>
+          </div>
+
+          <div class="fluxo-detalhes">
+            <h3>1) Solicitação</h3>
+            <p>Feita pelo técnico solicitante para inserção em projeto (mapa/croqui).</p>
+
+            <h3>2) Elaboração</h3>
+            <p>O técnico avalia os dados, organiza pastas, valida projeção e alinha detalhes com o solicitante.</p>
+
+            <h3>3) Revisão Técnica</h3>
+            <p>Após prévia finalização, o coordenador avalia padrões técnicos e decide: aprovar ou retornar para ajustes.</p>
+
+            <h3>4) Ajustes</h3>
+            <p>Correções são aplicadas conforme apontamentos e retornam para validação final quando necessário.</p>
+
+            <h3>5) Entrega Final</h3>
+            <p>Entrega ao solicitante com pastas organizadas e nomeação padronizada (arquivos + bases + versões).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PADRÕES -->
+      <section id="padroes" class="secao" data-page-title="Padrões Técnicos">
+        
+
+        <div class="grid-padroes">
+          <div class="padrao-card">
+            <h4>Sistema de Referência</h4>
+            <p><strong>Datum:</strong> SIRGAS 2000</p>
+            <p><strong>Projeção:</strong> UTM</p>
+          </div>
+
+          <div class="padrao-card">
+            <h4>Nomeação (Obrigatória)</h4>
+            <code>PLANTA_GEORREFERENCIADA_A0_HORIZONTAL_REV00</code>
+            <p class="muted">Use REV01, REV02... conforme revisões.</p>
+          </div>
+
+          <div class="padrao-card">
+            <h4>Regras rápidas</h4>
+            <ul class="lista">
+              <li>Conferir SRID antes do layout</li>
+              <li>Legendas e fontes completas</li>
+              <li>Versão e data no carimbo</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESTRUTURA DE PASTAS -->
+      <section id="estrutura" class="secao" data-page-title="Estrutura de Pastas">
+      
+
+        <div class="card">
+          <p>
+            Padrão recomendado para organização e rastreabilidade. Evita “arquivo solto” e facilita auditoria e revisão.
+          </p>
+
+<pre class="tree">
+/GEOMAP
+  /CLIENTE_OU_PROCESSO
+    /01_SOLICITACAO
+    /02_BASES
+      /SHP
+      /RASTER
+      /KML
+      /MAPA
+      /EXCEL
+    /03_ENTREGA_FINAL
+</pre>
+
+          <ul class="lista">
+            <li>Não salvar shapefile incompleto (shp sem dbf/prj/shx).</li>
+            <li>Raster sempre com metadata/fonte e data.</li>
+            <li>Versões numeradas e registradas (REV00, REV01...).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ELEMENTOS -->
+      <section id="elementos" class="secao" data-page-title="Elementos Obrigatórios">
+        
+
+        <div class="grid-check">
+          <div class="check">✔ Título</div>
+          <div class="check">✔ Legenda</div>
+          <div class="check">✔ Escala Gráfica e Numérica</div>
+          <div class="check">✔ Orientação Geográfica</div>
+          <div class="check">✔ Projeção / Datum</div>
+          <div class="check">✔ Fonte</div>
+          <div class="check">✔ Mapa de Situação</div>
+          <div class="check">✔ Carimbo</div>
+          <div class="check">✔ Responsável Técnico</div>
+          <div class="check">✔ Data</div>
+        </div>
+      </section>
+
+      <!-- BOAS PRÁTICAS -->
+      <section id="boaspraticas" class="secao" data-page-title="Boas Práticas">
+    
+
+        <div class="card">
+          <p class="muted">Boas práticas recomendadas antes de enviar para revisão técnica:</p>
+
+          <ul class="lista leitura">
+            <li>Conferir projeção (SIRGAS 2000 / UTM)</li>
+            <li>Validar topologia e sobreposição</li>
+            <li>Revisar ortografia e padronização textual</li>
+            <li>Conferir elementos obrigatórios do mapa</li>
+            <li>Organizar estrutura de pastas e versões (REV00, REV01...)</li>
+            <li>Aplicar checklists (qualidade, ambiental e minerário quando aplicável)</li>
+          </ul>
+
+          <div class="btn-row">
+            <a href="doc/CHECK_LIST_QUALIDADE.pdf" target="_blank" class="btn-outline">📋 Checklist de Qualidade</a>
+            <a href="doc/CHECK_LIST_AMBIENTAL.pdf" target="_blank" class="btn-outline">📋 Checklist Ambiental</a>
+            <a href="doc/CHECK_LIST_MINERARIO.pdf" target="_blank" class="btn-outline">📋 Checklist Minerário</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Rodapé fixo com status -->
+    <footer class="footer-fixed" role="contentinfo">
+      <div class="footer-inner">
+        <span class="footer-left">Versão: <strong>R01</strong> • Setor Cartografia • Fev/2026</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
